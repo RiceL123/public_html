@@ -1,0 +1,115 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.6em;
+    line-height: 1.5;
+    color: #222;
+    background-color: rgb(244, 205, 255);
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    color: #111;
+    margin: 0.5em 0 0.2em 0;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.25em;
+}
+
+h4 {
+    font-size: 1em;
+}
+
+h5 {
+    font-size: 0.9em;
+}
+
+h6 {
+    font-size: 0.8em;
+}
+
+p {
+    margin: 0.5em 0;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #ffffff;
+}
+
+a:hover {
+    color: #0099ff;
+    text-decoration: underline;
+}
+
+hr {
+    margin: 1.5em 0;
+    border: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-height: 40px;
+    padding: 10px;
+    background-color: #e37b85;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    max-height: 100%;
+    align-self: center;
+    margin: 0 10px;
+}
+
+.pfp-link {
+    display: flex;
+    align-items: center;
+}
+
+.pfp:hover {
+    left: 0;
+    top: 0;
+    max-height: 60px;
+    max-width: 60px;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+.pfp {
+    left: 0;
+    top: 0;
+    max-height: 50px;
+    max-width: 50px;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+.main {
+    max-width: 700px;
+    margin: auto;
+}
