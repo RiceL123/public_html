@@ -1,11 +1,19 @@
+:root {
+    --background-color: rgb(238, 125, 140);
+    --main-color: rgb(248, 222, 255);
+
+}
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 1.6em;
     line-height: 1.5;
-    color: #222;
-    background-color: rgb(244, 205, 255);
+    background-color: var(--background-color);
     margin: 0;
     padding: 0;
+    background-image: url("https://cdn.discordapp.com/attachments/848817257303900162/1054350523010142290/4096.png");
+    background-attachment: scroll;
+    background-repeat: no-repeat, repeat-y;
+    background-position: top;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -54,7 +62,7 @@ a:visited {
 }
 
 a:hover {
-    color: #0099ff;
+    color: #b11e04;
     text-decoration: underline;
 }
 
@@ -67,28 +75,22 @@ hr {
 nav {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     max-height: 40px;
     padding: 10px;
-    background-color: #e37b85;
+    /* background-color: #e37b85; */
+    background: linear-gradient(to bottom, rgb(78, 78, 78) 0%, rgba(0,0,0,0) 100%);
 }
 
 nav ul {
     display: flex;
     list-style: none;
-    margin: 0;
     padding: 0;
 }
 
 nav li {
-    max-height: 100%;
     align-self: center;
     margin: 0 10px;
-}
-
-.pfp-link {
-    display: flex;
-    align-items: center;
 }
 
 .pfp:hover {
@@ -97,10 +99,11 @@ nav li {
     max-height: 60px;
     max-width: 60px;
     border-radius: 50%;
-    margin: 0 10px;
 }
 
 .pfp {
+    display: flex;
+    align-items: center;
     left: 0;
     top: 0;
     max-height: 50px;
@@ -110,6 +113,26 @@ nav li {
 }
 
 .main {
-    max-width: 700px;
+    max-width: 1000px;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    border-radius: 1rem;
+    
     margin: auto;
+    background-color: var(--main-color);
 }
+
+/* footer {
+    position: absolute;
+    bottom: 0;
+    max-width: 100%;
+    border-top: 1px #b11e04;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(to top, rgb(169, 169, 169) 0%, rgba(0,0,0,0) 100%);
+}
+
+.footer-note {
+    border-top: 1px #111 solid;
+    font-size: 1rem;
+} */
