@@ -1,3 +1,3 @@
 # public_html
 
-![http://www.cse.unsw.edu.au/~z5422235/]
+http://www.cse.unsw.edu.au/~z5422235/
