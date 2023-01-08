@@ -4,6 +4,7 @@
     --accent-color1: rgb(235, 162, 174);
     --accent-color2: rgb(231, 98, 120);
     --accent-color3: rgb(128, 233, 163);
+    --accent-color4: rgb(84, 209, 115);
 }
 
 body {
@@ -65,16 +66,16 @@ p {
 }
 
 a {
-    color: var(--accent-color1);
+    color: var(--accent-color3);
     text-decoration: none;
 }
 
 a:visited {
-    color: var(--accent-color2);
+    color: var(--accent-color4);
 }
 
 a:hover {
-    color: var(--accent-color3);
+    color: var(--accent-color1);
     text-decoration: underline;
 }
 
@@ -89,7 +90,7 @@ nav {
     align-items: center;
     max-height: 40px;
     padding: 10px;
-    background: linear-gradient(to bottom, var(--accent-color2) 0%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(to bottom, var(--main-color) 0%, rgba(0,0,0,0) 100%);
 }
 
 nav ul {
@@ -127,7 +128,7 @@ nav li {
     padding-left: 1rem;
     padding-top: 1rem;
     border-radius: 1rem;
-    margin: auto;
+    margin-inline: auto;
     background-color: var(--main-color);
 }
 
