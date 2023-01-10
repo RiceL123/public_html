@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- styles for  -->
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="style.css">
+
+
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +22,8 @@
     </ul>
   </nav>
 
+  <div id="graph-container"></div>
+
   <div class="main">
     <h1>Eric L</h1>
 
@@ -27,22 +33,27 @@
       <a href="#instagram" id="instagram">Instagram</a>
     </p>
   
-    <h2 id="youtube">YouTube</h2>
-    <p>
-      Idk sometimes I do vlogs
-    </p>
+    <h2 id="youtube" class="node">YouTube</h2>
+      <p>
+        Idk sometimes I do vlogs
+      </p>
   
-    <h2 id="twitch">Twitch</h2>
+    <h2 id="twitch" class="node">Twitch</h2>
     <p>
       As high-skilled tetris player (ex ranked #4 in aus), I decided to stream some of my gameplay during lockdown
     </p>
   
-    <h2 id="instagram">Instagram</h2>
+    <h2 id="instagram" class="node">Instagram</h2>
     <p>
       Sometimes do digital art? Also was in the creative portfolio for csesoc
     </p>
+
   </div>
 
+  <canvas></canvas>
 
 </body>
+<!-- d3 script to draw networks / graphs -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="graph.js" type="module"></script>
 </html>
