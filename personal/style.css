@@ -1,3 +1,8 @@
+.graph-container {
+    width: 100%;
+    height: 500px;
+}
+
 .graph-node {
-    fill: blue;
+    fill: var(--accent-color1);
 }
