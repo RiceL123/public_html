@@ -38,33 +38,56 @@ const simulation = d3.forceSimulation(graph.nodes)
     .force("center", d3.forceCenter(500, 250))
     .on("tick", ticked);
 
-// Binding the force simulation to the data
-var link = conatiner.append("g")
+// Binding the force simulation to the data of links
+var link = conatiner.append("g")    // this "g" is a container for the svg
     .selectAll('line')
     .data(graph.links)
     .join('line')
+    .attr('class', 'graph-link');
 
+// Bind the force simulation to the data of nodes
 var node = conatiner.append("g")
     .selectAll('circle')
     .data(graph.nodes)
     .join('circle')
+    .attr('class', 'graph-node')
+    .call(drag(simulation));
 
 function ticked() {
 link
     .attr("x1", d => d.source.x)
     .attr("y1", d => d.source.y)
     .attr("x2", d => d.target.x)
-    .attr("y2", d => d.target.y)
-    .attr('class', 'graph-link')
-    .attr('stroke', 'black');
+    .attr("y2", d => d.target.y);
 
 node
     .attr("cx", d => d.x)
-    .attr("cy", d => d.y)
-    .attr('class', 'graph-node')
-    .attr('r', 5);
+    .attr("cy", d => d.y);
 }
 
+function drag(simulation) {    
+    function dragstarted(event) {
+        if (!event.active) simulation.alphaTarget(0.2).restart();
+        event.subject.fx = event.subject.x;
+        event.subject.fy = event.subject.y;
+    }
+
+    function dragged(event) {
+        event.subject.fx = event.x;
+        event.subject.fy = event.y;
+    }
+
+    function dragended(event) {
+        if (!event.active) simulation.alphaTarget(0);
+        event.subject.fx = null;
+        event.subject.fy = null;
+    }
+
+    return d3.drag()
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended);
+}
 // d3.select(".graph-container")
 //     .selectAll('circle')   // 0 div's in graph-conatiner
 //     .data(graph.nodes)     // 6 divs in data

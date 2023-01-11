@@ -10,10 +10,13 @@
     width: 100%;
     height: 100%;
     fill: var(--accent-color1);
-    background-color: var(--accent-color2);
+    /* background-color: var(--accent-color2); */
     text-align: center;
+    r: 0.5rem;
 }
 
 .graph-link {
     stroke: var(--accent-color3);
+    stroke-width: 0.2rem;
+    stroke-opacity: 0.6;
 }
