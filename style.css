@@ -5,6 +5,7 @@
     --accent-color2: rgb(231, 98, 120);
     --accent-color3: rgb(128, 233, 163);
     --accent-color4: rgb(84, 209, 115);
+    --border-radius: 0.6rem;
 }
 
 body {

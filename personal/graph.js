@@ -4,7 +4,7 @@ fetch('./graph.json')
     .then(data => {
         // calling the object that was made parsing the json to be named graph
         let graph = data;
-        console.log(graph);
+        // console.log(graph);
     
     // getting the graph container
     let container = d3.select('.graph-container');

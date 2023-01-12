@@ -1,5 +1,5 @@
 .blog-article {
-  border-radius: 0.6rem;
+  border-radius: var(--border-radius);
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
