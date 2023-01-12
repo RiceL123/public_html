@@ -30,6 +30,8 @@ fetch('./graph.json')
         .join('line')
         .attr('class', 'graph-link');
 
+    
+
     var nodeTextShow = function(d) {
         // Highlight hovered node
         d3.select(this)
@@ -102,6 +104,10 @@ fetch('./graph.json')
             .style("fill", "rgb(235, 162, 174)")
     }
 
+    function openLink(d) {
+            console.log(d3.select(this));
+    }
+
     // Binding the force simulation to the data of nodes
     var node = container.append("g")
         .selectAll('circle')
@@ -111,7 +117,18 @@ fetch('./graph.json')
         .attr('r', radius)
         .on("mouseover", nodeTextShow)
         .on("mouseout", nodeTexthide)
+        .on("click", openLink)
         .call(drag(simulation));
+
+    // create text element for each node
+    var nodeText = container.append("g")
+        .selectAll("text")
+        .data(graph.nodes)
+        .enter()
+        .append("text")
+        .text(function(d) { return d.id; }) // set text to node's name
+        .attr("x", function(d) { return d.x; }) // position text at node's x position
+        .attr("y", function(d) { return d.y + radius + 5; }); // position text slightly below node's y position
 
     function ticked() {
         link
@@ -128,6 +145,10 @@ fetch('./graph.json')
         // Function so that the nodes do not go out of the graph-container
         // node.attr("cx", function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)); })
         //     .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });
+        
+        nodeText
+            .attr("x", function(d) { return d.x; })
+            .attr("y", function(d) { return d.y + radius + 5; });
     }
 
     // function for dragging nodes around
