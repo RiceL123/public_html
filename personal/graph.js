@@ -18,8 +18,9 @@ fetch('./graph.json')
         .force("link", d3.forceLink(graph.links).id(function id(d) {return d.id;}).distance(70))
         .force("center", d3.forceCenter(width / 2, height / 2))
         .force("collide", d3.forceCollide(radius + 1))
-        .force("x", d3.forceX())    // prevent subgraphs from leaving viewport
-        .force("y", d3.forceY())    // prevent subgraphs from leaving viewport
+        .force("x", d3.forceX(width / 2).strength(0.1))    // prevent subgraphs from leaving viewport
+        .force("y", d3.forceY(height / 2).strength(0.1))    // prevent subgraphs from leaving viewport
+        .alphaTarget(0.1)  // makes decay slower
         .on("tick", ticked);
 
     // Binding the force simulation to the data of links
@@ -113,20 +114,20 @@ fetch('./graph.json')
         .call(drag(simulation));
 
     function ticked() {
-    link
-        .attr("x1", d => d.source.x)
-        .attr("y1", d => d.source.y)
-        .attr("x2", d => d.target.x)
-        .attr("y2", d => d.target.y);
+        link
+            .attr("x1", d => d.source.x)
+            .attr("y1", d => d.source.y)
+            .attr("x2", d => d.target.x)
+            .attr("y2", d => d.target.y);
 
-    // node will be attracted towards the center because of d3.forceX() and d3.forceY()
-    node
-        .attr("cx", d => d.x)
-        .attr("cy", d => d.y);
+        // node will be attracted towards the center because of d3.forceX() and d3.forceY()
+        node
+            .attr("cx", d => d.x)
+            .attr("cy", d => d.y)
 
-    // Function so that the nodes do not go out of the graph-container
-    // node.attr("cx", function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)); })
-    //     .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });
+        // Function so that the nodes do not go out of the graph-container
+        // node.attr("cx", function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)); })
+        //     .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });
     }
 
     // function for dragging nodes around
@@ -143,7 +144,7 @@ fetch('./graph.json')
         }
 
         function dragended(event) {
-            if (!event.active) simulation.alphaTarget(0);
+            if (!event.active) simulation.alphaTarget(0.1);
             event.subject.fx = null;
             event.subject.fy = null;
         }
