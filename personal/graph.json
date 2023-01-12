@@ -1,0 +1,30 @@
+{
+    "nodes": [
+        { "id": "Home" },
+        { "id": "Personal" },
+        { "id": "Blog" },
+        { "id": "LinkedIn" },
+        { "id": "GitHub" },
+        { "id": "Resume" },
+        { "id": "Youtube" },
+        { "id": "Twitch" },
+        { "id": "Instagram" },
+        { "id": "Twitter" },
+        { "id": "Reddit" },
+        { "id": "MyAnimeList" },
+        { "id": "Tetrio" },
+        { "id": "Jstris" },
+        { "id": "Osu" }
+    ],
+    "links": [
+        { "source": "Home", "target": "Personal" },
+        { "source": "Home", "target": "Blog" },
+        { "source": "Home", "target": "LinkedIn" },
+        { "source": "Personal", "target": "Youtube" },
+        { "source": "Personal", "target": "Twitch" },
+        { "source": "Personal", "target": "Instagram" },
+        { "source": "Twitter", "target": "MyAnimeList" },
+        { "source": "Tetrio", "target": "Jstris" },
+        { "source": "Resume", "target": "LinkedIn" }
+    ]
+}
