@@ -18,6 +18,9 @@
     stroke-opacity: 0.6;
 }
 
+.main {
+    max-width: 1200px;
+}
 .platform {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
