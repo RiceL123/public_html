@@ -133,7 +133,7 @@ fetch('./graph.json')
     // function for dragging nodes around
     function drag(simulation) {    
         function dragstarted(event) {
-            if (!event.active) simulation.alphaTarget(0.2).restart();
+            if (!event.active) simulation.alphaTarget(0.4).restart();
             event.subject.fx = event.subject.x;
             event.subject.fy = event.subject.y;
         }
