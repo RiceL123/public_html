@@ -23,8 +23,13 @@
     max-width: 1200px;
 }
 
+@media screen and (min-width: 1000px) {
+    .platform {
+        display: flex;
+    }
+}
+
 .platform {
-    display: flex;
     padding: 1rem;
     gap: 1rem;
     border-radius: var(--border-radius);
