@@ -30,39 +30,9 @@ fetch('./graph.json')
         .join('line')
         .attr('class', 'graph-link');
 
-    
-
     var nodeTextShow = function(d) {
         // Highlight hovered node
         d3.select(this)
-            .transition()
-            .duration(200)
-            .style("fill", "red")
-            
-        // Find all links connected to hovered node
-        var connectedLinks = link.filter(function(l) {
-            return l.source.id == d.id || l.target.id == d.id;
-        });
-
-        // Highlight connected links
-        connectedLinks
-            .transition()
-            .duration(200)
-            .style("stroke", "red");
-            
-        // Find all connected nodes
-        var connectedNodes = node.filter(function(n) {
-            var source = connectedLinks.data().find(function(l) {
-                return l.source.id == n.id;
-            });
-            var target = connectedLinks.data().find(function(l) {
-                return l.target.id == n.id;
-            });
-            return source || target;
-        });
-        
-        // Highlight connected nodes
-        connectedNodes
             .transition()
             .duration(200)
             .style("fill", "red")
@@ -74,61 +44,33 @@ fetch('./graph.json')
             .transition()
             .duration(200)
             .style("fill", "rgb(235, 162, 174)")
-            
-        // Find all links connected to hovered node
-        var connectedLinks = link.filter(function(l) {
-            return l.source.id == d.id || l.target.id == d.id;
-        });
-
-        // reset connected links
-        connectedLinks
-            .transition()
-            .duration(200)
-            .style("stroke", "black");
-            
-        // Find all connected nodes
-        var connectedNodes = node.filter(function(n) {
-            var source = connectedLinks.data().find(function(l) {
-                return l.source.id == n.id;
-            });
-            var target = connectedLinks.data().find(function(l) {
-                return l.target.id == n.id;
-            });
-            return source || target;
-        });
-        
-        // reset connected nodes
-        connectedNodes
-            .transition()
-            .duration(200)
-            .style("fill", "rgb(235, 162, 174)")
     }
 
     function openLink(d) {
             console.log(d3.select(this));
     }
 
-    // Binding the force simulation to the data of nodes
-    var node = container.append("g")
-        .selectAll('circle')
+    // nodeCaontainer to hold the node and the text
+    var nodeContainer = container.append("g")
+        .selectAll("g")
         .data(graph.nodes)
-        .join('circle')
+        .enter()
+        .append("g")
+        .call(drag(simulation));
+    
+    nodeContainer.append('circle')
         .attr('class', 'graph-node')
         .attr('r', radius)
         .on("mouseover", nodeTextShow)
         .on("mouseout", nodeTexthide)
-        .on("click", openLink)
-        .call(drag(simulation));
+        .on("dblclick", openLink);
 
-    // create text element for each node
-    var nodeText = container.append("g")
-        .selectAll("text")
-        .data(graph.nodes)
-        .enter()
-        .append("text")
-        .text(function(d) { return d.id; }) // set text to node's name
-        .attr("x", function(d) { return d.x; }) // position text at node's x position
-        .attr("y", function(d) { return d.y + radius + 5; }); // position text slightly below node's y position
+    nodeContainer.append('text')
+        .attr("text-anchor", "middle")
+        .attr("transform", function(d) {
+                return `translate(0, ${radius + 20})`;
+        })
+        .text(function(d) {return d.id;});
 
     function ticked() {
         link
@@ -137,18 +79,11 @@ fetch('./graph.json')
             .attr("x2", d => d.target.x)
             .attr("y2", d => d.target.y);
 
-        // node will be attracted towards the center because of d3.forceX() and d3.forceY()
-        node
-            .attr("cx", d => d.x)
-            .attr("cy", d => d.y)
-
-        // Function so that the nodes do not go out of the graph-container
-        // node.attr("cx", function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)); })
-        //     .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });
-        
-        nodeText
-            .attr("x", function(d) { return d.x; })
-            .attr("y", function(d) { return d.y + radius + 5; });
+        // nodeContainer which is <g></g> element only accepts transform and not d.x and d.y unfortunately
+        nodeContainer
+            .attr("transform", function(d) {
+                return `translate(${d.x},${d.y})`;
+            })
     }
 
     // function for dragging nodes around
