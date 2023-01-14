@@ -35,7 +35,14 @@ fetch('./graph.json')
         d3.select(this)
             .transition()
             .duration(200)
-            .style("fill", "red")
+            .style("fill", "red");
+        
+        // edit the text
+        d3.select(this.parentNode).select("text")
+            .transition()
+            .duration(200)
+            .style("font-size", "30px")
+            .style("fill", "red");
     }
 
     var nodeTexthide = function(d) {
@@ -43,32 +50,45 @@ fetch('./graph.json')
         d3.select(this)
             .transition()
             .duration(200)
-            .style("fill", "rgb(235, 162, 174)")
+            .style("fill", "rgb(235, 162, 174)");
+        
+        // Decrease font-size of text
+        d3.select(this.parentNode).select("text")
+            .transition()
+            .duration(200)
+            .style("font-size", "25px")
+            .style("fill", "black");
     }
 
     function openLink(d) {
-            console.log(d3.select(this));
+            console.log(d);
+            console.log(this);
+            console.log(nodeContainer);
     }
 
     // nodeCaontainer to hold the node and the text
     var nodeContainer = container.append("g")
         .selectAll("g")
         .data(graph.nodes)
-        .enter()
-        .append("g")
+        .join("g")
         .call(drag(simulation));
     
+    // node with functionality to call functions
     nodeContainer.append('circle')
         .attr('class', 'graph-node')
         .attr('r', radius)
         .on("mouseover", nodeTextShow)
         .on("mouseout", nodeTexthide)
-        .on("dblclick", openLink);
+        .on("dblclick", function(d) {
+            console.log(this.href);
+            window.location.href = d.toElement.__data__.href;
+        });
 
+    // appending the text to be aligned below the node
     nodeContainer.append('text')
         .attr("text-anchor", "middle")
         .attr("transform", function(d) {
-                return `translate(0, ${radius + 20})`;
+                return `translate(0, ${radius * 3})`;
         })
         .text(function(d) {return d.id;});
 
