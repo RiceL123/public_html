@@ -42,7 +42,8 @@ fetch('./graph.json')
             .transition()
             .duration(200)
             .style("font-size", "30px")
-            .style("fill", "red");
+            .style("fill", "red")
+            .attr("transform", `translate(0, ${radius * 4})`)
     }
 
     var nodeTexthide = function(d) {
@@ -57,7 +58,8 @@ fetch('./graph.json')
             .transition()
             .duration(200)
             .style("font-size", "25px")
-            .style("fill", "black");
+            .style("fill", "black")
+            .attr("transform", `translate(0, ${radius * 3})`)
     }
 
     function openLink(d) {
@@ -80,16 +82,14 @@ fetch('./graph.json')
         .on("mouseover", nodeTextShow)
         .on("mouseout", nodeTexthide)
         .on("dblclick", function(d) {
-            console.log(this.href);
+            // console.log(this.href);
             window.location.href = d.toElement.__data__.href;
         });
 
     // appending the text to be aligned below the node
     nodeContainer.append('text')
         .attr("text-anchor", "middle")
-        .attr("transform", function(d) {
-                return `translate(0, ${radius * 3})`;
-        })
+        .attr("transform", `translate(0, ${radius * 3})`)
         .text(function(d) {return d.id;});
 
     function ticked() {
