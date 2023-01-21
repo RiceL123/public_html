@@ -1,0 +1,23 @@
+.graph-container {
+    /* display: flex; */
+    align-self: center;
+    grid-gap: 1px;
+    width: 1000px;
+    height: 500px;
+    /* background-color: var(--accent-color2); */
+    /* margin-top: -90px; */
+}
+
+.graph-link {
+    stroke: var(--accent-color3);
+    stroke-width: 0.2rem;
+    stroke-opacity: 0.6;
+}
+
+.graph-content {
+    display: flex;
+}
+
+.active a {
+    color: red;
+}

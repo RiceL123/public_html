@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- styles for main-->
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="style.css">
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eric L</title>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <a href="https://linktr.ee/ricel123" class="pfp-link"><img class="pfp"
+          src="https://cdn.discordapp.com/attachments/781392968493563925/782135331385245696/image.png"></a>
+      <li><a href="..">Home</a></li>
+      <li><a href=".">Personal</a></li>
+      <li><a href="../blog">Blog</a></li>
+    </ul>
+  </nav>
+
+  <div class="graph-content">
+
+  <div class="links">
+      <ul>
+        <li class="link" id="Home"><a href="#">Home</a></li>
+        <li class="link" id="Personal"><a href="#">Personal</a></li>
+        <li class="link" id="Links"><a href="#">Links</a></li>
+        <li class="link" id="Blog"><a href="#">Blog</a></li>
+        <li class="link" id="LinkedIn"><a href="#">Linkedin</a></li>
+        <li class="link" id="GitHub"><a href="#">Github</a></li>
+      </ul>
+    </div>
+
+    <svg class="graph-container"></svg>
+    <!-- d3 script to draw networks / graphs -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="./graph.js"></script>
+  </div>
+</body>
+
+</html>

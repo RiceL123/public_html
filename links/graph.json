@@ -1,0 +1,15 @@
+{
+    "nodes": [
+        { "id": "Home", "href": "" },
+        { "id": "Personal", "href": "" },
+        { "id": "Blog", "href": "" },
+        { "id": "LinkedIn", "href": "" },
+        { "id": "GitHub", "href": "" },
+        { "id": "Links", "href": ""}
+    ],
+    "links": [
+        { "source": "Home", "target": "Personal" },
+        { "source": "Home", "target": "Blog" },
+        { "source": "Home", "target": "LinkedIn" }
+    ]
+}
